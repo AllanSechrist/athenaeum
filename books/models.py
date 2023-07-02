@@ -8,8 +8,7 @@ class Book(models.Model):
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
-        editable=False
-    )
+        editable=False)
     title = models.CharField(max_length=500)
     author = models.CharField(max_length=200)
     publisher = models.CharField(max_length=200)
