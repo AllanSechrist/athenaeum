@@ -1,0 +1,19 @@
+import uuid
+from django.db import models
+from django.urls import reverse
+
+
+class Student(models.Model):
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False)
+    first_name = models.CharField(max_length=25)
+    last_name = models.CharField(max_length=25)
+    books = models.ManyToManyField("books")
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+    
+    def get_absolute_url(self):
+        return reverse("book_detail", args=[str(self.id)])
