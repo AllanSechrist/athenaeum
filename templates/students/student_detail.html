@@ -1,0 +1,10 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ student.first_name }}{% endblock title %}
+
+{% block content %}
+    <div class="book-detail">
+        <h2><a href="">{{ student.first_name }}</a></h2>
+        <p>{{ student.grade }}</p>
+    </div>
+{% endblock content %}
