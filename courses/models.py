@@ -7,6 +7,9 @@ from django.urls import reverse
 class Teacher(models.Model):
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class Course(models.Model):
     COURSE_TYPES = [
@@ -22,15 +25,28 @@ class Course(models.Model):
         ("P2", "PreSchool 2"),
         ("P1", "PreSchool 1"),
     ]
-    teachers = [(teacher.name, teacher.name) for teacher in Teacher.objects.all()]
+    DAYS = [
+        ("M", "Monday"),
+        ("T", "Tuesday"),
+        ("W", "Wednesday"),
+        ("Th", "Thursday"),
+        ("F", "Friday"),
+    ]
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
         editable=False)
     type = models.CharField(max_length=5, choices=COURSE_TYPES)
-    teacher = None
-    start_date = None
-    end_date = None
+    day = models.CharField(max_length=2, choices=DAYS)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    # start_date = None
+    # end_date = None
+
+    def __str__(self):
+        return f"{self.type} {self.day}"
+    
+    def get_absolute_url(self):
+        return reverse("course_detail", args=[str(self.id)])
 
 
 
