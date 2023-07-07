@@ -4,8 +4,8 @@
 
 {% block content %}
     <div class="book-detail">
-        <h2><a href="">{{ course.type }}</a></h2>
-        <p>Day: {{ course.day }}</p>
+        <h2><a href="">{{ course.get_type_display }}</a></h2>
+        <p>Day: {{ course.get_day_display }}</p>
         <p>Teacher: {{ course.teacher }}</p>
     </div>
 {% endblock content %}

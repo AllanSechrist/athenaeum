@@ -5,7 +5,7 @@
 {% block content %}
     {% for course in course_list %}
         <div>
-            <h2><a href="{{ course.get_absolute_url }}">{{ course.type }}</a></h2>
+            <h2><a href="{{ course.get_absolute_url }}">{{ course.get_type_display }}</a></h2>
         </div>
     {% endfor %}
 {% endblock content %}
