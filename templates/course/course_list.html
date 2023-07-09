@@ -3,9 +3,21 @@
 {% block title %}Courses{% endblock title %}
 
 {% block content %}
+    <table class="table">
+        <thead>
+            <tr scope="row">
+                <th scope="col">Courses</th>
+                <th scope="col">Day</th>
+                <th scope="col">Teacher</th>
+            </tr>
+        </thead>
     {% for course in course_list %}
-        <div>
-            <h2><a href="{{ course.get_absolute_url }}">{{ course.get_type_display }}</a></h2>
-        </div>
+        <tr scope="row">
+            <td><a href="{{ course.get_absolute_url }}">{{ course.get_type_display }}</a></td>
+            <td>{{ course.get_day_display }}</td>
+            <td>{{ course.teacher }}</td>
+        </tr>
+       
     {% endfor %}
+    </table>
 {% endblock content %}

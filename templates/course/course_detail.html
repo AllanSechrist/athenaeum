@@ -3,9 +3,26 @@
 {% block title %}{{ course.type }} {{ course.day }}{% endblock title %}
 
 {% block content %}
-    <div class="book-detail">
-        <h2><a href="">{{ course.get_type_display }}</a></h2>
-        <p>Day: {{ course.get_day_display }}</p>
-        <p>Teacher: {{ course.teacher }}</p>
-    </div>
+    
+    <h2>{{ course.get_type_display }}</h2>
+    <p>Day: {{ course.get_day_display }}</p>
+    <p>Teacher: {{ course.teacher }}</p>
+    <table>
+        <tr>
+            <th>Students</th>
+        </tr>
+        <tr>
+            <td>John</td>
+        </tr>
+        <tr>
+            <td>Paul</td>
+        </tr>
+        <tr>
+            <td>Ringo</td>
+        </tr>
+        <tr>
+            <td>George</td>
+        </tr>
+
+    </table>
 {% endblock content %}
