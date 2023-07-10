@@ -4,24 +4,36 @@
 
 {% block content %}
     
-    <h2>{{ course.get_type_display }}</h2>
-    <p>Day: {{ course.get_day_display }}</p>
-    <p>Teacher: {{ course.teacher }}</p>
-    <table>
-        <tr>
-            <th>Students</th>
-        </tr>
-        <tr>
+    <h1>{{ course.get_type_display }}</h1>
+    <h3>Day: {{ course.get_day_display }}</h3>
+    <h3>Teacher: {{ course.teacher }}</h3>
+    <table class="table">
+        <thead>
+            <tr scope="row">
+                <th scope="col">Students</th>
+                <th scope="col">Current Workbook</th>
+                <th scope="col">Current Reading Book</th>
+            </tr>
+        </thead>
+        <tr scope="row">
             <td>John</td>
+            <td>Success in Comprehension</td>
+            <td>The Cat in The Hat</td>
         </tr>
-        <tr>
+        <tr scope="row">
             <td>Paul</td>
+            <td>Success in Comprehension</td>
+            <td>The Cat in The Hat</td>
         </tr>
-        <tr>
+        <tr scope="row">
             <td>Ringo</td>
+            <td>Success in Comprehension</td>
+            <td>The Cat in The Hat</td>
         </tr>
-        <tr>
+        <tr scope="row">
             <td>George</td>
+            <td>Success in Comprehension</td>
+            <td>The Cat in The Hat</td>
         </tr>
 
     </table>
