@@ -2,16 +2,24 @@ import uuid
 from django.db import models
 from django.urls import reverse
 
+from students.models import Student
 
 
 class Teacher(models.Model):
+    """Store the names of the teachers"""
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
 
 
+
+
 class Course(models.Model):
+    """
+    Used to create a course with all information
+    related to the course.
+    """
     COURSE_TYPES = [
         ("AC", "After School"),
         ("PA", "Pre-After"),
@@ -39,6 +47,7 @@ class Course(models.Model):
     type = models.CharField(max_length=5, choices=COURSE_TYPES)
     day = models.CharField(max_length=2, choices=DAYS)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    students = models.ManyToManyField(Student, through="StudentCourseRelation")
     # start_date = None
     # end_date = None
 
@@ -49,4 +58,16 @@ class Course(models.Model):
         return reverse("course_detail", args=[str(self.id)])
 
 
+
+class StudentCourseRelation(models.Model):
+    """
+    A model to connect Students and Courses together to 
+    display what courses have what students and vice versa.
+    """
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return f"{self.student} - {self.book}"
 
