@@ -3,9 +3,18 @@
 {% block title %}Students{% endblock title %}
 
 {% block content %}
+    <table class="table">
+        <thead>
+            <tr scope="row">
+                <th scope="col">Name</th>
+                <th scope="col">Grade</th>
+            </tr>
+        </thead>
     {% for student in student_list %}
-        <div>
-            <h2><a href="{{ student.get_absolute_url }}">{{ student.first_name }}</a></h2>
-        </div>
+        <tr scope="row">
+            <td><a href="{{ student.get_absolute_url }}">{{ student.first_name }} {{ student.last_name }}</a></td>
+            <td>{{ student.grade }}</td>
+        </tr>
     {% endfor %}
+    </table>
 {% endblock content %}

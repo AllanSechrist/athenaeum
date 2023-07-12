@@ -52,7 +52,7 @@ class Course(models.Model):
     # end_date = None
 
     def __str__(self):
-        return f"{self.type} {self.day}"
+        return f"{self.type} - {self.day}"
     
     def get_absolute_url(self):
         return reverse("course_detail", args=[str(self.id)])
@@ -69,5 +69,5 @@ class StudentCourseRelation(models.Model):
 
 
     def __str__(self):
-        return f"{self.student} - {self.book}"
+        return f"{self.student} - {self.course}"
 

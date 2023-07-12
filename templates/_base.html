@@ -44,6 +44,12 @@
               <a class="nav-link" href="{% url 'book_list' %}">Books</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'course_list' %}">Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'student_list' %}">Students</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About</a>
             </li>
             {% if user.is_authenticated %}

@@ -3,9 +3,22 @@
 {% block title %}Books{% endblock title %}
 
 {% block content %}
+    <table class="table">
+        <thead>
+            <tr scope="row">
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Publisher</th>
+                <th scope="col">Level</th>
+            </tr>
+        </thead>
     {% for book in book_list %}
-        <div>
-            <h2><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h2>
-        </div>
+        <tr scope="row">
+            <td><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.publisher }}</a></td>
+            <td>{{ book.level }}</a></td>
+        </tr>
     {% endfor %}
+    </table>
 {% endblock content %}
