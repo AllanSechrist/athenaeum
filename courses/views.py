@@ -1,5 +1,6 @@
 from django.views.generic import ListView, DetailView
 from .models import Course
+from books.models import StudentBookRelation, Book
 
 
 class CourseListView(ListView):
@@ -16,6 +17,9 @@ class CourseDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         course = self.get_object()
-        students = course.studentcourserelation_set.all()
+        student_book_relations = StudentBookRelation.objects.filter(course=course)
+        students = student_book_relations.values_list('student', flat=True).distinct()
+        books = Book.objects.filter(studentbookrelation__in=student_book_relations)
         context['students'] = students
+        context['books'] = books
         return context

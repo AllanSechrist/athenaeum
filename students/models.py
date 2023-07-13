@@ -11,7 +11,6 @@ class Student(models.Model):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
     grade = models.CharField(max_length=25)
-    full_name = f"{first_name} {last_name}"
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

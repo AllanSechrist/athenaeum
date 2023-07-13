@@ -2,8 +2,6 @@ import uuid
 from django.db import models
 from django.urls import reverse
 
-from students.models import Student
-
 
 class Book(models.Model):
     id = models.UUIDField(
@@ -14,7 +12,7 @@ class Book(models.Model):
     author = models.CharField(max_length=200)
     publisher = models.CharField(max_length=200)
     level = models.CharField(max_length=1)
-    students = models.ManyToManyField(Student, through="StudentBookRelation")
+    students = models.ManyToManyField('students.Student', through="StudentBookRelation")
 
     def __str__(self):
         return self.title
@@ -24,10 +22,16 @@ class Book(models.Model):
     
 
 class StudentBookRelation(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    """
+    A model that connects students, books, and courses.
+    Courses will have specific books that are connected
+    to the students of that course.
+    """
+    student = models.ForeignKey("students.Student", on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    course = models.ForeignKey("courses.Course", on_delete=models.CASCADE)
     
     def __str__(self):
-        return f"{self.student} - {self.book}"
+        return f"{self.student} - {self.book} - {self.course}"
 
     

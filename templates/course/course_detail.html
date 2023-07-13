@@ -15,11 +15,11 @@
                 <th scope="col">Current Reading Book</th>
             </tr>
         </thead>
-    {% for student in students %}
+    {% for student, book in students|zip:books %}
         <tr scope="row">
             <td>{{ student.student.first_name }} {{ student.student.last_name }}</td>
             <td>Success in Comprehension</td>
-            <td>The Cat in The Hat</td>
+            <td>{{ book.book.title }}</td>
         </tr>
     {% empty %}
         <h3>No students enrolled in this class.</h3>
