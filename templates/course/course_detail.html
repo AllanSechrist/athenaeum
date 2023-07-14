@@ -1,4 +1,5 @@
 {% extends "_base.html" %}
+{% load custom_filters %}
 
 {% block title %}{{ course.type }} {{ course.day }}{% endblock title %}
 
@@ -15,11 +16,11 @@
                 <th scope="col">Current Reading Book</th>
             </tr>
         </thead>
-    {% for student, book in students|zip:books %}
+    {% for student, book in students|zip_lists:books %}
         <tr scope="row">
-            <td>{{ student.student.first_name }} {{ student.student.last_name }}</td>
+            <td>{{ student }}</td>
             <td>Success in Comprehension</td>
-            <td>{{ book.book.title }}</td>
+            <td>{{ book.title }}</td>
         </tr>
     {% empty %}
         <h3>No students enrolled in this class.</h3>

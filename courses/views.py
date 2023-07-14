@@ -17,8 +17,8 @@ class CourseDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         course = self.get_object()
-        student_book_relations = StudentBookRelation.objects.filter(course=course)
-        students = student_book_relations.values_list('student', flat=True).distinct()
+        student_book_relations = StudentBookRelation.objects.filter(course=course).select_related('student')
+        students = [relation.student for relation in student_book_relations]
         books = Book.objects.filter(studentbookrelation__in=student_book_relations)
         context['students'] = students
         context['books'] = books
