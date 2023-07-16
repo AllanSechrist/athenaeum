@@ -3,7 +3,8 @@ from django.db import models
 from django.db.models import Case, When, F
 from django.views.generic import ListView, DetailView
 from .models import Course
-from books.models import StudentBookRelation, Book
+from relationships.models import StudentBookRelation
+from books.models import Book
 
 
 class CourseListView(ListView):
