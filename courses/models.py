@@ -45,14 +45,15 @@ class Course(models.Model):
     type = models.CharField(max_length=5, choices=COURSE_TYPES)
     day = models.CharField(max_length=2, choices=DAYS)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
-    # start_date = None
-    # end_date = None
+    start_date = models.DateField()
+    finish_date = models.DateField(null=True, blank=True) # This might change before the end of the
+    # school year so it is to be left blank until then.
 
     def __str__(self):
         return f"{self.type} - {self.day}"
     
     def get_absolute_url(self):
-        return reverse("course_detail", args=[str(self.id)])
+        return reverse("course_detail", args=[self.day, str(self.id)])
 
 
 

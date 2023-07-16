@@ -1,0 +1,12 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ textbook.title }}{% endblock title %}
+
+{% block content %}
+    <div class="book-detail">
+        <h2>{{ textbook.title }}</h2>
+        <h3>Publisher: {{ textbook.publisher }}</h3>
+        <h3>Level: {{ textbook.grade_level }}</h3>
+        <h3>ISBN: {{ textbook.isbn}}</h3>
+    </div>
+{% endblock content %}

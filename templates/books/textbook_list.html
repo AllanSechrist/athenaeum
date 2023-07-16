@@ -1,0 +1,24 @@
+{% extends "_base.html" %}
+
+{% block title %}Textbooks{% endblock title %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr scope="row">
+                <th scope="col">Title</th>
+                <th scope="col">Publisher</th>
+                <th scope="col">Level</th>
+                <th scope="col">ISBN</th>
+            </tr>
+        </thead>
+    {% for textbook in textbook_list %}
+        <tr scope="row">
+            <td><a href="{{ textbook.get_absolute_url }}">{{ textbook.title }}</a></td>
+            <td>{{ textbook.publisher }}</td>
+            <td>{{ textbook.grade_level }}</td>
+            <td>{{ textbook.isbn }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock content %}
