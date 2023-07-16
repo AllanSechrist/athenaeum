@@ -30,7 +30,7 @@ class Book(models.Model):
     publisher = models.CharField(max_length=200)
     level = models.CharField(max_length=1, choices=generate_level_choices())
     is_library_book = models.BooleanField(default=False)
-    students = models.ManyToManyField('students.Student', through="StudentBookRelation")
+    # students = models.ManyToManyField('students.Student', through="StudentBookRelation")
 
     def __str__(self):
         return self.title
@@ -61,7 +61,7 @@ class TextBook(models.Model):
     publisher = models.CharField(max_length=500)
     grade_level = models.CharField(max_length=5, choices=GRADE_LEVELS)
     isbn = models.CharField(max_length=13) # ISBN numbers have a length of 10 or 13
-    students = models.ManyToManyField('students.Student', through="StudentBookRelation")
+    # students = models.ManyToManyField('students.Student', through="StudentBookRelation")
 
     def __str__(self):
         return self.title
@@ -88,7 +88,7 @@ class StudentBookRelation(models.Model):
 class ReaderBookHistory(models.Model):
     """
     A model that keeps track of the readers a student
-    has been assigned. To be created upon change of reader.
+    has been assigned. 
     """
     student = models.ForeignKey("students.Student", on_delete=models.CASCADE)
     reader = models.ForeignKey(Book, on_delete=models.CASCADE)
@@ -103,7 +103,7 @@ class ReaderBookHistory(models.Model):
 class TextbookHistory(models.Model):
     """
     A model that keeps track of the textbooks a student
-    has been assigned. To be created upon change of textbook.
+    has been assigned. 
     """
     student = models.ForeignKey("students.Student", on_delete=models.CASCADE)
     textbook = models.ForeignKey(TextBook, on_delete=models.CASCADE)
