@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView
-from .models import Book, TextBook, ReaderBookHistory, TextbookHistory
+from .models import Book, TextBook
 
 
 class BookListView(ListView):
@@ -21,14 +21,4 @@ class TextBookDetailView(DetailView):
     model = TextBook
     context_object_name = "textbook"
     template_name = "books/textbook_detail.html"
-
-class ReaderBookHistoryListView(ListView):
-    model = ReaderBookHistory
-    context_object_name = "readerbookhistory"
-    template_name = "books/reader_history_list.html"
-
-class TextbookHistoryListView(ListView):
-    model = TextbookHistory
-    context_object_name = "textbookhistory"
-    template_name = "books/textbook_history_list.html"
 

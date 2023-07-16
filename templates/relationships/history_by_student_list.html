@@ -1,0 +1,66 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ student.first_name }} {{ student.last_name }}{% endblock title %}
+
+
+{% block content %}
+    <h1>{{ student.first_name }} {{ student.last_name }}</h1>
+    <h3>Readers History</h3>
+    <table class="table">
+        <thead>
+            <tr scope="row">
+                <th scope="col">Reader</th>
+                <th scope="col">Course</th>
+                <th scope="col">Level</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Finish Date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for history in history_by_student_list %}
+                <tr scope="row">
+                    <td>{{ history.reader }}</td>
+                    <td>{{ history.course }}</td>
+                    <td>{{ history.reader.level }}</td>
+                    <td>{{ history.start_date }}</td>
+                    <td>{{ history.finish_date }}</td>
+                </tr>
+            {% empty %}
+                <tr colspan="5">
+                    No readers have been assigned.
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Textbook History</h3>
+    <table>
+        <thead>
+            <tr scope="row">
+                <th scope="col">Textbook</th>
+                <th scope="col">Course</th>
+                <th scope="col">Level</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Finish Date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for history in history_by_student_list %}
+                <tr scope="row">
+                    <td>{{ history.textbook }}</td>
+                    <td>{{ history.course }}</td>
+                    <td>{{ history.textbook.grade_level }}</td>
+                    <td>{{ history.start_date }}</td>
+                    <td>{{ history.finish_date }}</td>
+                </tr>
+            {% empty %}
+                <tr colspan="5">
+                    No Textbooks have been assigned.
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock content %}

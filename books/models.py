@@ -84,33 +84,4 @@ class StudentBookRelation(models.Model):
     def __str__(self):
         return f"{self.student} - {self.book} - {self.textbook} - {self.course}"
     
-
-class ReaderBookHistory(models.Model):
-    """
-    A model that keeps track of the readers a student
-    has been assigned. 
-    """
-    student = models.ForeignKey("students.Student", on_delete=models.CASCADE)
-    reader = models.ForeignKey(Book, on_delete=models.CASCADE)
-    course = models.ForeignKey("courses.Course", on_delete=models.CASCADE)
-    start_date = models.DateField()
-    finish_date = models.DateField(null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.student} - {self.reader} - {self.start_date} - {self.finish_date}"
-    
-
-class TextbookHistory(models.Model):
-    """
-    A model that keeps track of the textbooks a student
-    has been assigned. 
-    """
-    student = models.ForeignKey("students.Student", on_delete=models.CASCADE)
-    textbook = models.ForeignKey(TextBook, on_delete=models.CASCADE)
-    course = models.ForeignKey("courses.Course", on_delete=models.CASCADE)
-    start_date = models.DateField()
-    finish_date = models.DateField(null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.student} - {self.textbook} - {self.start_date} - {self.finish_date}"
     
