@@ -70,18 +70,5 @@ class TextBook(models.Model):
         return reverse("textbook_detail", args=[str(self.id)])
     
 
-class StudentBookRelation(models.Model):
-    """
-    A model that connects students, books, and courses.
-    Courses will have specific books that are connected
-    to the students of that course.
-    """
-    student = models.ForeignKey("students.Student", on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    textbook = models.ForeignKey(TextBook, on_delete=models.CASCADE)
-    course = models.ForeignKey("courses.Course", on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return f"{self.student} - {self.book} - {self.textbook} - {self.course}"
     
     
