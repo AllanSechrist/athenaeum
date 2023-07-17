@@ -1,5 +1,9 @@
+from itertools import chain
 from django.views.generic import ListView
+from django.shortcuts import get_object_or_404
 from .models import ReaderBookHistory, TextbookHistory
+from students.models import Student
+from courses.models import Course
 
 
 class ReaderBookHistoryListView(ListView):
@@ -20,8 +24,17 @@ class HistoryByCourseListView(ListView):
 
     def get_queryset(self):
         course_id = self.kwargs['course_id']
-        history_list = ReaderBookHistory.objects.filter(course_id=course_id) | TextbookHistory.objects.filter(course_id=course_id)
+        reader_history = ReaderBookHistory.objects.filter(course_id=course_id)
+        textbook_history = TextbookHistory.objects.filter(course_id=course_id)
+        history_list = list(chain(reader_history, textbook_history))
         return history_list
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        course_id = self.kwargs['student_id']
+        course = get_object_or_404(Course, id=course_id)
+        context['course'] = course
+        return context
 
 
 class HistoryByStudentListView(ListView):
@@ -30,5 +43,14 @@ class HistoryByStudentListView(ListView):
 
     def get_queryset(self):
         student_id = self.kwargs['student_id']
-        history_list = ReaderBookHistory.objects.filter(student_id=student_id) | TextbookHistory.objects.filter(student_id=student_id)
+        reader_history = ReaderBookHistory.objects.filter(student_id=student_id)
+        textbook_history = TextbookHistory.objects.filter(student_id=student_id)
+        history_list = list(chain(reader_history, textbook_history))
         return history_list
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        student_id = self.kwargs['student_id']
+        student = get_object_or_404(Student, id=student_id)
+        context['student'] = student
+        return context

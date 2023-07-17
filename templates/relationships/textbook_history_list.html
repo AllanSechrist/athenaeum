@@ -1,0 +1,33 @@
+{% extends "_base.html" %}
+
+{% block title %}Textbooks{% endblock title %}
+
+{% block content %}
+    <h1>
+        Textbook History 
+    </h1>
+    <table class="table">
+        <thead>
+            <tr scope="row">
+                <th scope="col">Student</th>
+                <th scope="col">Textbook</th>
+                <th scope="col">Course</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Finish Date</th>
+            </tr>
+        </thead>
+    {% for textbook in textbook_history_list %}
+        <tr scope="row">
+            <td><a href="{% url 'history_by_student_list' textbook.student.id %}">{{ textbook.student }}</a></td>
+            <td>{{ textbook.reader }}</td>
+            <td>{{ textbook.course }}</td>
+            <td>{{ textbook.start_date }}</td>
+            <td>{{ textbook.finish_date }}</td>
+        </tr>
+    {% empty %}
+        <h3>
+            There are no books in the list.
+        </h3>
+    {% endfor %}
+    </table>
+{% endblock content %}

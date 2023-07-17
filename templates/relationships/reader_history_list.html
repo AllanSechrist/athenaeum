@@ -1,0 +1,33 @@
+{% extends "_base.html" %}
+
+{% block title %}Readers{% endblock title %}
+
+{% block content %}
+    <h1>
+        Readers History 
+    </h1>
+    <table class="table">
+        <thead>
+            <tr scope="row">
+                <th scope="col">Student</th>
+                <th scope="col">Reader</th>
+                <th scope="col">Course</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Finish Date</th>
+            </tr>
+        </thead>
+    {% for reader in reader_book_history_list %}
+        <tr scope="row">
+            <td>{{ reader.student }}</td>
+            <td>{{ reader.reader }}</td>
+            <td>{{ reader.course }}</td>
+            <td>{{ reader.start_date }}</td>
+            <td>{{ reader.finish_date }}</td>
+        </tr>
+    {% empty %}
+        <h3>
+            There are no books in the list.
+        </h3>
+    {% endfor %}
+    </table>
+{% endblock content %}
