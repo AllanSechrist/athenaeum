@@ -10,6 +10,7 @@
                 <th scope="col">Author</th>
                 <th scope="col">Publisher</th>
                 <th scope="col">Level</th>
+                <th scope="col">Edit</th>
             </tr>
         </thead>
     {% for book in book_list %}
@@ -18,6 +19,7 @@
             <td>{{ book.author }}</td>
             <td>{{ book.publisher }}</a></td>
             <td>{{ book.level }}</a></td>
+            <td><button type="button" class="btn btn-primary">Edit</button></td>
         </tr>
     {% endfor %}
     </table>

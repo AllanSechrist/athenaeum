@@ -31,7 +31,7 @@ class HistoryByCourseListView(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        course_id = self.kwargs['student_id']
+        course_id = self.kwargs['course_id']
         course = get_object_or_404(Course, id=course_id)
         context['course'] = course
         return context

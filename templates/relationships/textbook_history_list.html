@@ -19,7 +19,7 @@
     {% for textbook in textbook_history_list %}
         <tr scope="row">
             <td><a href="{% url 'history_by_student_list' textbook.student.id %}">{{ textbook.student }}</a></td>
-            <td>{{ textbook.reader }}</td>
+            <td>{{ textbook.textbook }}</td>
             <td>{{ textbook.course }}</td>
             <td>{{ textbook.start_date }}</td>
             <td>{{ textbook.finish_date }}</td>

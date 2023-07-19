@@ -1,0 +1,71 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ course.get_type_display }} {{ course.get_day_display }}{% endblock title %}
+
+
+{% block content %}
+    <h1>{{ course.get_type_display }} {{ course.get_day_display }}</h1>
+    <h2>{{ course.teacher }}</h2>
+    <h3>Readers History</h3>
+    <table class="table">
+        <thead>
+            <tr scope="row">
+                <th scope="col">Reader</th>
+                <th scope="col">Course</th>
+                <th scope="col">Level</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Finish Date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for history in history_by_student_list %}
+                {% if history.reader %}
+                    <tr scope="row">
+                        <td>{{ history.reader }}</td>
+                        <td>{{ history.course }}</td>
+                        <td>{{ history.reader.level }}</td>
+                        <td>{{ history.start_date }}</td>
+                        <td>{{ history.finish_date }}</td>
+                    </tr>
+                {% endif %}
+            {% empty %}
+                <tr colspan="5">
+                    No readers have been assigned.
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Textbook History</h3>
+    <table class="table">
+        <thead>
+            <tr scope="row">
+                <th scope="col">Textbook</th>
+                <th scope="col">Course</th>
+                <th scope="col">Level</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Finish Date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for history in history_by_student_list %}
+                {% if history.textbook %}
+                    <tr scope="row">
+                        <td>{{ history.textbook }}</td>
+                        <td>{{ history.course }}</td>
+                        <td>{{ history.textbook.grade_level }}</td>
+                        <td>{{ history.start_date }}</td>
+                        <td>{{ history.finish_date }}</td>
+                    </tr>
+                {% endif %}
+            {% empty %}
+                <tr colspan="5">
+                    No Textbooks have been assigned.
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock content %}

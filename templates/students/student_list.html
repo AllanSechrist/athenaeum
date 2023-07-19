@@ -8,12 +8,14 @@
             <tr scope="row">
                 <th scope="col">Name</th>
                 <th scope="col">Grade</th>
+                <th scope="col">Edit</th>
             </tr>
         </thead>
     {% for student in student_list %}
         <tr scope="row">
             <td><a href="{{ student.get_absolute_url }}">{{ student.first_name }} {{ student.last_name }}</a></td>
             <td>{{ student.grade }}</td>
+            <td><button type="button" class="btn btn-primary">Edit</button></td>
         </tr>
     {% endfor %}
     </table>

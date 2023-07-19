@@ -10,6 +10,7 @@
                 <th scope="col">Publisher</th>
                 <th scope="col">Level</th>
                 <th scope="col">ISBN</th>
+                <th scope="col">Edit</th>
             </tr>
         </thead>
     {% for textbook in textbook_list %}
@@ -18,6 +19,7 @@
             <td>{{ textbook.publisher }}</td>
             <td>{{ textbook.grade_level }}</td>
             <td>{{ textbook.isbn }}</td>
+            <td><button type="button" class="btn btn-primary">Edit</button></td>
         </tr>
     {% endfor %}
     </table>

@@ -11,6 +11,7 @@
                 <th scope="col">Teacher</th>
                 <th scope="col">Start Date</th>
                 <th scope="col">Finish Date</th>
+                <th scope="col">Edit</th>
             </tr>
         </thead>
     {% for course in course_list %}
@@ -20,6 +21,7 @@
             <td>{{ course.teacher }}</td>
             <td>{{ course.start_date }}</td>
             <td>{{ course.finish_date }}</td>
+            <td><button type="button" class="btn btn-primary">Edit</button></td>
         </tr>
     {% endfor %}
     </table>
