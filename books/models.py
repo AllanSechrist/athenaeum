@@ -29,7 +29,7 @@ class Book(models.Model):
     author = models.CharField(max_length=200)
     publisher = models.CharField(max_length=200)
     level = models.CharField(max_length=1, choices=generate_level_choices() + ["Textbook"])
-    book_type = models.CharField(max_length=8, choices=["Reader", "Textbook"])
+    book_type = models.CharField(max_length=8, choices=[("Reader","Reader"), ("Textbook", "Textbook")])
     isbn = models.CharField(max_length=13)
 
     def __str__(self):
