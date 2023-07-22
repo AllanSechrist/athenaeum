@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "students.apps.StudentsConfig",
     "courses.apps.CoursesConfig",
     "relationships.apps.RelationshipsConfig",
+    "classes.apps.ClassesConfig",
 ]
 
 

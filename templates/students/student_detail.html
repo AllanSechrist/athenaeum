@@ -17,7 +17,7 @@
         </thead>
         {% for course in courses_with_student %}
             <tr scope="row">
-                <td>{{ course.get_type_display }}</td>
+                <td><a href="{% url 'course_detail' day=course.day pk=course.id %}">{{ course.get_type_display }}</a></td>
                 <td>{{ course.get_day_display }}</td>
                 <td>{{ course.teacher }}</td>
             </tr>
